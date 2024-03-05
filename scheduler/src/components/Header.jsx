@@ -25,12 +25,22 @@ const Header = () => {
     return () => clearInterval(intervalId);
   }, [currentTime, currentDay]);
 
+  const handleClear = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   return (
     <div className='container mx-auto flex flex-col items-center'>
       <h1 className='text-center mb-2 text-decoration underline font-bold text-lg'>My Daily Schedule</h1>
       <div className='flex-grow text-center px-4 py-2 m-2'>
         {currentDay} <br></br>
         {currentTime}
+      </div>
+      <div className='items-start'>
+        <button className='bg-cyan-300  text-white font-bold py-2 px-4 rounded hover:scale-105 ease-in duration-200' onClick={handleClear}>
+          Clear Schedule
+        </button>
       </div>
     </div>
   );
